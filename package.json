@@ -1,0 +1,31 @@
+{
+  "name": "lightargs",
+  "version": "1.0.0",
+  "description": "Helps build and parse CLI arguments in your application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damianpolak/lightargs.git"
+  },
+  "keywords": [
+    "cli",
+    "command",
+    "line",
+    "arguments",
+    "argument",
+    "build",
+    "parse",
+    "usage",
+    "help",
+    "message"
+  ],
+  "author": "Damian Polak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/damianpolak/lightargs/issues"
+  },
+  "homepage": "https://github.com/damianpolak/lightargs#readme"
+}
