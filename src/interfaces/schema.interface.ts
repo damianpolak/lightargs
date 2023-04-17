@@ -4,6 +4,18 @@
  * Flags --verbose --silent
  */
 
+export interface Schema {
+  appName: string,
+  appTitle: string,
+  appEntry: string,
+  appDescription?: string,
+  data: {
+    arguments: Argument[],
+    options: Option[],
+    flags: Flag[]
+  }
+}
+
 export enum FlagType {
   short = '-',
   long = '--'
@@ -16,22 +28,22 @@ export enum Validate {
 }
 
 export interface Argument {
-  name: string,
   value: string | number | boolean,
   validation: Validate
 }
 
 export interface Option {
+  id: string,
+  cliName: string | string[],
   type: FlagType | string,
-  name: string | string[],
-  // value: string | number | boolean,
   equal?: boolean,
   validation?: Validate
 }
 
 export interface Flag {
+  id: string,
+  cliName: string,
   type: FlagType | string,
-  name: string
 }
 
 export enum CLIArgType {
