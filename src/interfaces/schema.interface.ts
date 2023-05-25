@@ -9,7 +9,7 @@ export interface Schema {
   appTitle: string,
   appEntry: string,
   appDescription?: string,
-  data: {
+  cli: {
     arguments: Argument[],
     options: Option[],
     flags: Flag[]

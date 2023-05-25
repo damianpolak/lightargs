@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { Patterns } from '../src/patterns.class';
 
-describe('Regex patterns', () => {
+describe('Regex general patterns', () => {
   it('checks string is argument', () => {
     expect(Patterns.isArgument('file1.txt')).toEqual(true);
     expect(Patterns.isArgument('f-ile2.txt')).toEqual(true);
@@ -68,3 +68,24 @@ describe('Just checks couple of args', () => {
     expect(Patterns.isJustOptionEq('--output=log.txt', '--test')).toEqual(true);
   })
 });
+
+describe('Regex input schema RegExp', () => {
+  it('checks schema flag name', () => {
+    expect('my test string1'.match(Patterns.P_SCHEMA_FLAG_NAME) !== null).toBe(true);
+    expect('my-test-string2'.match(Patterns.P_SCHEMA_FLAG_NAME) !== null).toBe(true);
+    expect('-my-test-string'.match(Patterns.P_SCHEMA_FLAG_NAME) !== null).toBe(true);
+    expect('--my-test-string'.match(Patterns.P_SCHEMA_FLAG_NAME) !== null).toBe(true);
+    expect('--my-te  st-str  ing'.match(Patterns.P_SCHEMA_FLAG_NAME) !== null).toBe(true);
+    expect('--my test=string'.match(Patterns.P_SCHEMA_FLAG_NAME) !== null).toBe(false);
+    expect('!@#$%^&*'.match(Patterns.P_SCHEMA_FLAG_NAME) !== null).toBe(false);
+    expect('my test name-'.match(Patterns.P_SCHEMA_FLAG_NAME) !== null).toBe(false);
+  })
+
+  it('checks schema flag name for replacing spaces and dashes', () => {
+    expect('my test string1'.replace(Patterns.P_SCHEMA_FLAG_NAME_REPLACE, '-')).toBe('my-test-string1');
+    expect('my test string2'.replace(Patterns.P_SCHEMA_FLAG_NAME_REPLACE, '-')).toBe('my-test-string2');
+    expect('Test     String     '.replace(Patterns.P_SCHEMA_FLAG_NAME_REPLACE, '-')).toEqual('Test-String-');
+    expect('replacing    multiple----   dashes'.replace(Patterns.P_SCHEMA_FLAG_NAME_REPLACE, '-')).toEqual('replacing-multiple-dashes');
+    expect('------replacing    multiple----   dashes'.replace(Patterns.P_SCHEMA_FLAG_NAME_REPLACE, '-')).toEqual('-replacing-multiple-dashes');
+  })
+})

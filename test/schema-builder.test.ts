@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { SchemaBuilder } from '../src/schema-builder.class';
 
 describe('Schema builder class', () => {
-  const emptyData = {
-    data: {
+  const emptyCliData = {
+    cli: {
       options: [],
       flags: [],
       arguments: []
@@ -17,7 +17,7 @@ describe('Schema builder class', () => {
       appTitle: 'This is my app',
       appEntry: 'myapp.js',
       appDescription: '',
-      ...emptyData
+      ...emptyCliData
     })
 
     const schema_2 = new SchemaBuilder('My app2', 'This is my app2', 'myapp2.js', 'This is example description of my app2');
@@ -26,7 +26,7 @@ describe('Schema builder class', () => {
       appTitle: 'This is my app2',
       appEntry: 'myapp2.js',
       appDescription: 'This is example description of my app2',
-      ...emptyData
+      ...emptyCliData
     })
 
     // const schema_3 = new SchemaBuilder('Unit converter', 'Application for convert units', 'units.js')

@@ -12,18 +12,18 @@ export class SchemaBuilder {
   private _flag?: Flag[] = []; 
   private _argument?: Argument[] = [];
 
-  public addOption(obj: Option): this {
-    (<Option[]>this._option).push(obj);
+  public addOption(parameters: Option): this {
+    (<Option[]>this._option).push(parameters);
     return this;
   }
 
-  public addFlag(obj: Flag): this {
-    (<Flag[]>this._flag).push(obj);
+  public addFlag(parameters: Flag): this {
+    (<Flag[]>this._flag).push(parameters);
     return this;
   }
 
-  public addArgument(obj: Argument): this {
-    (<Argument[]>this._argument).push(obj);
+  public addArgument(parameters: Argument): this {
+    (<Argument[]>this._argument).push(parameters);
     return this;
   }
 
@@ -33,7 +33,7 @@ export class SchemaBuilder {
       appTitle: this.appTitle,
       appEntry: this.appEntry,
       appDescription: this.appDescription,
-      data: {
+      cli: {
         options: <Option[]>this._option,
         flags: <Flag[]>this._flag,
         arguments: <Argument[]>this._argument
