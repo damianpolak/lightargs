@@ -1,18 +1,22 @@
 export class Patterns {
-  public static PATTERN_ARGUMENT: RegExp = /^[^-]+.*$/;
-  public static PATTERN_FLAG_EQ: RegExp = /^[-]+.[a-zA-Z0-9-]+[=]+\S.*$/;
-  public static PATTERN_FLAG: RegExp = /^[-]+.[a-zA-Z0-9-]*[^\W]{1}$/;
+  public static P_ARGUMENT: RegExp = /^[^-]+.*$/;
+  public static P_FLAG_EQ: RegExp = /^[-]+.[a-zA-Z0-9-]+[=]+\S.*$/;
+  public static P_FLAG: RegExp = /^[-]+.[a-zA-Z0-9-]*[^\W]{1}$/;
+
+  public static P_SCHEMA_FLAG_NAME = /^[a-zA-Z0-9- ]*[^\W]{1}$/;
+  public static P_SCHEMA_FLAG_NAME_REPLACE = /[\W^ |-]+/g;
+  public static P_SCHEMA_FLAG_NAME_REPLACE_END = /^(.*?)\W*$/;
 
   public static isArgument(value: string): boolean {
-    return value.match(this.PATTERN_ARGUMENT) !== null;
+    return value.match(this.P_ARGUMENT) !== null;
   }
 
   public static isFlag(value: string): boolean {
-    return value.match(this.PATTERN_FLAG) !== null;
+    return value.match(this.P_FLAG) !== null;
   }
 
   public static isFlagEq(value: string): boolean {
-    return value.match(this.PATTERN_FLAG_EQ) !== null;
+    return value.match(this.P_FLAG_EQ) !== null;
   }
 
   public static isJustFlag(arg: string, nextArg: string|undefined|null): boolean {
